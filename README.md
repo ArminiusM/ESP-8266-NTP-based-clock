@@ -6,18 +6,19 @@ This code runs on an ESP8266 and connects to an access point you have to add int
 When connection to the AP is established, connection to an NTP server (also configurable in the source code) is established and a time stamp is created printing the time to the serial console every second. An instance of the class AGSimpleNTPtime keeps track of the time while AGSimpleNTPtime.update() is called in the loop() of the ESP. The RTC (millis()) of the ESP is used to calculate the time stamp at every call to update(). At frequent intervals the AGSimpleNTPtime instance is comparing the timestamp to the NTP time and adjusts the time by a few milliseconds at every update() call. How often the NTP server is called can be configured. The default is 15 minutes.
 
 Look for these lines to change:
-
-> String NTPde("de.pool.ntp.org");  // NTP server used when connection tt primary accesspoint fails  
-> IPAddress NTPhome(192,168,1,1);   // local NTP server adress used when access to primary accesspoint works,  
->                                   // or insert an official one.  
-> String Hssid = "Home Accesspoint SSID";  
-> String Hpassword = "Password for Home Accesspoint";  
-
+```
+String NTPde("de.pool.ntp.org");  // NTP server used when connection tt primary accesspoint fails  
+IPAddress NTPhome(192,168,1,1);   // local NTP server adress used when access to primary accesspoint works,  
+                                  // or insert an official one.  
+String Hssid = "Home Accesspoint SSID";  
+String Hpassword = "Password for Home Accesspoint";  
+```
 Optional changes:  
-> #define LANGUAGE      AGDateTimeStamp::DE  
-> #define REGION        AGSimpleNTPtime::EU  
-> #define DAYLIGHTSHIFT 60  
-
+```
+#define LANGUAGE      AGDateTimeStamp::DE  
+#define REGION        AGSimpleNTPtime::EU  
+#define DAYLIGHTSHIFT 60  
+```
 The directories containing the two classes AGSimpleNTPESP and AGDateTimeStamp must be copied to the Arduino's library folder.
 
 When everything is correct, after compiling and uploading the serial console shoud show:
