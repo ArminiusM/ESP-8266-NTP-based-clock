@@ -7,9 +7,9 @@ When connection to the AP is established, connection to an NTP server (also conf
 
 Look for these lines to change:
 ```
-String NTPde("de.pool.ntp.org");  // NTP server used when connection tt primary accesspoint fails  
-IPAddress NTPhome(192,168,1,1);   // local NTP server adress used when access to primary accesspoint works,  
-                                  // or insert an official one.  
+String NTPde("de.pool.ntp.org");  // NTP server used when connection to primary accesspoint fails  
+IPAddress NTPhome(192,168,1,1);   // local NTP server adress used when access to primary accesspoint works.  
+                                  // Insert an official one if you do not have one at home.  
 String Hssid = "Home Accesspoint SSID";  
 String Hpassword = "Password for Home Accesspoint";  
 ```
