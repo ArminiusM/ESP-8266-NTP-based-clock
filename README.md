@@ -7,21 +7,21 @@ When connection to the AP is established, connection to an NTP server (also conf
 
 Look for these lines to change:
 
-String NTPde("de.pool.ntp.org");  // NTP server used when connection tt primary accesspoint fails  
-IPAddress NTPhome(192,168,1,1);   // local NTP server adress used when access to primary accesspoint works,  
-                                  // or insert an official one.  
-String Hssid = "Home Accesspoint SSID";  
-String Hpassword = "Password for Home Accesspoint";  
+> String NTPde("de.pool.ntp.org");  // NTP server used when connection tt primary accesspoint fails  
+> IPAddress NTPhome(192,168,1,1);   // local NTP server adress used when access to primary accesspoint works,  
+>                                   // or insert an official one.  
+> String Hssid = "Home Accesspoint SSID";  
+> String Hpassword = "Password for Home Accesspoint";  
 
 Optional changes:  
-#define LANGUAGE      AGDateTimeStamp::DE  
-#define REGION        AGSimpleNTPtime::EU  
-#define DAYLIGHTSHIFT 60  
+> #define LANGUAGE      AGDateTimeStamp::DE  
+> #define REGION        AGSimpleNTPtime::EU  
+> #define DAYLIGHTSHIFT 60  
 
 The directories containing the two classes AGSimpleNTPESP and AGDateTimeStamp must be copied to the Arduino's library folder.
 
 When everything is correct, after compiling and uploading the serial console shoud show:
-
+```
 Connecting to YOURACCESSPOINTNAME  
 WiFi Verbindung aufgebaut  
 Eigene IP des ESP-Modul: 192.168.2.7  
@@ -37,7 +37,7 @@ So, 2018-04-08 19:48:07 +
 So, 2018-04-08 19:48:08 +  
 So, 2018-04-08 19:48:09 +  
 So, 2018-04-08 19:48:10 +  
-
+```
 where the + sign indicates daylight saving time. The language of the two digit day can be changed (see AGDateTimeStamp.h). Daylight saving time is calculated for mean european summer time or US daylight saving time.
 
 Within the main loop it should be easy to set external devices like 7-segment displays etc to show the time. Just use TimeStamp->getHour() etc. to get the values you need. See printTimeToSerial() in the main program for example.
